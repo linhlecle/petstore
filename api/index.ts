@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { ZenStackMiddleware } from '@zenstackhq/server/express';
-import RestApiHandler from '@zenstackhq/server/api/rest';
+// import RestApiHandler from '@zenstackhq/server/api/rest';
 import express from 'express';
 import { compareSync } from 'bcryptjs';
 import dotenv from 'dotenv';
@@ -53,7 +53,7 @@ const spec = JSON.parse(
 );
 app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(spec, options));
 
-const apiHandler = RestApiHandler({ endpoint: 'http://localhost:3000/api' });
+// const apiHandler = RestApiHandler({ endpoint: 'http://localhost:3000/api' });
 
 app.use(
     '/api',
@@ -61,7 +61,7 @@ app.use(
         getPrisma: (req) => {
             return withPresets(prisma, { user: getUser(req) });
         },
-        handler: apiHandler
+        // handler: apiHandler
     })
 );
 
